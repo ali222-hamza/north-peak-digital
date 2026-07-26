@@ -1,256 +1,193 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>North Peak Digital | High-Converting Digital Solutions</title>
-    <meta name="description" content="North Peak Digital helps brands grow with cutting-edge web development, UI/UX design, and performance optimization.">
-    <!-- Tailwind CSS CDN for instant responsive layout & fast rendering -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>North Peak Digital | Web Development Agency</title>
+    <meta name="description" content="North Peak Digital delivers high-performance web applications and UI/UX design.">
+    
+    <style>
+        /* Pure inline CSS to guarantee 95+ Lighthouse Score */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+        body { background-color: #0f172a; color: #f8fafc; line-height: 1.6; }
+        a { color: inherit; text-decoration: none; }
+        
+        .header { position: fixed; top: 0; width: 100%; background: rgba(15, 23, 42, 0.95); border-bottom: 1px solid #1e293b; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: #fff; }
+        .logo span { color: #3b82f6; }
+        .nav { display: flex; gap: 2rem; }
+        .nav a { color: #cbd5e1; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        .nav a:hover { color: #60a5fa; }
+        .btn { background: #2563eb; color: #fff; padding: 0.6rem 1.2rem; border-radius: 0.5rem; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; transition: background 0.2s; display: inline-block; }
+        .btn:hover { background: #1d4ed8; }
+        
+        .hero { padding: 8rem 2rem 4rem; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+        @media(min-width: 768px) { .hero { grid-template-columns: 1fr 1fr; } }
+        .hero-badge { background: rgba(30, 58, 138, 0.5); color: #60a5fa; padding: 0.3rem 0.8rem; border-radius: 999px; font-size: 0.8rem; border: 1px solid #2563eb; display: inline-block; margin-bottom: 1rem; }
+        .hero h1 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; color: #fff; }
+        .hero p { color: #94a3b8; font-size: 1.1rem; margin-bottom: 1.5rem; }
+        
+        .card { background: #1e293b; border: 1px solid #334155; padding: 1.5rem; border-radius: 0.75rem; }
+        .metrics-card { font-family: monospace; font-size: 0.9rem; }
+        .metrics-card p { margin-bottom: 0.5rem; }
+        
+        .section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .bg-dark { background: #020617; }
+        .section-title { text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .section-desc { text-align: center; color: #94a3b8; margin-bottom: 3rem; }
+        
+        .grid-3 { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        @media(min-width: 768px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+        
+        .service-num { font-size: 1.2rem; font-weight: 800; color: #3b82f6; margin-bottom: 0.5rem; }
+        .service-card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: #fff; }
+        .service-card p { color: #94a3b8; font-size: 0.9rem; }
+        
+        .pricing-card { display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+        .pricing-card.popular { border: 2px solid #3b82f6; position: relative; }
+        .price { font-size: 2rem; font-weight: 800; margin: 1rem 0; color: #fff; }
+        .features { list-style: none; margin-bottom: 1.5rem; }
+        .features li { color: #cbd5e1; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; color: #cbd5e1; }
+        .form-control { width: 100%; background: #0f172a; border: 1px solid #334155; padding: 0.75rem; border-radius: 0.5rem; color: #fff; font-size: 0.9rem; }
+        .form-control:focus { outline: none; border-color: #3b82f6; }
+        .error-msg { color: #f87171; font-size: 0.8rem; margin-top: 0.25rem; display: none; }
+        .success-msg { color: #4ade80; font-size: 0.9rem; text-align: center; margin-top: 1rem; display: none; }
+        
+        footer { background: #020617; border-top: 1px solid #1e293b; padding: 2rem; text-align: center; font-size: 0.85rem; color: #64748b; }
+        footer a { color: #94a3b8; text-decoration: underline; }
+    </style>
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans antialiased">
+<body>
 
-    <!-- Navigation -->
-    <header class="fixed top-0 left-0 w-full bg-gray-900/90 backdrop-blur-md z-50 border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold tracking-tight text-white">North Peak<span class="text-blue-500">.</span></a>
-            <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
-                <a href="#services" class="hover:text-blue-400 transition">Services</a>
-                <a href="#results" class="hover:text-blue-400 transition">Results</a>
-                <a href="#pricing" class="hover:text-blue-400 transition">Pricing</a>
-                <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
-            </nav>
-            <a href="#contact" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow-md transition">Get Started</a>
-        </div>
+    <header class="header">
+        <a href="#" class="logo">North Peak<span>.</span></a>
+        <nav class="nav">
+            <a href="#services">Services</a>
+            <a href="#results">Results</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <a href="#contact" class="btn">Get Started</a>
     </header>
 
-    <!-- 1. Hero Section -->
-    <section class="pt-36 pb-20 px-6 max-w-7xl mx-auto text-center md:text-left md:flex items-center justify-between gap-12">
-        <div class="md:w-1/2 space-y-6">
-            <span class="text-blue-500 text-sm font-semibold tracking-wider uppercase bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">Scalable Web Solutions</span>
-            <h1 class="text-4xl sm:text-6xl font-extrabold text-white leading-tight">Engineered for Exponential Growth.</h1>
-            <p class="text-gray-400 text-lg leading-relaxed">We design and build bespoke web applications, Shopify platforms, and high-performance user interfaces for modern brands.</p>
-            <div class="flex flex-col sm:flex-row gap-4 pt-4 justify-center md:justify-start">
-                <a href="#contact" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-3.5 rounded-lg text-center transition shadow-lg shadow-blue-500/20">Scale Your Business</a>
-                <a href="#services" class="border border-gray-700 hover:border-gray-500 text-gray-300 font-semibold px-8 py-3.5 rounded-lg text-center transition">Explore Services</a>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div>
+                <span class="hero-badge">Scalable Web Solutions</span>
+                <h1>Engineered for Exponential Growth.</h1>
+                <p>We design and build bespoke web applications, Shopify platforms, and high-performance user interfaces for modern brands.</p>
+                <a href="#contact" class="btn" style="padding: 0.8rem 1.8rem; font-size: 1rem;">Scale Your Business</a>
             </div>
-        </div>
-        <div class="md:w-1/2 mt-12 md:mt-0">
-            <div class="relative bg-gradient-to-tr from-blue-600 to-indigo-600 p-1 rounded-2xl shadow-2xl">
-                <div class="bg-gray-900 rounded-xl p-8 space-y-4">
-                    <div class="flex items-center space-x-3 border-b border-gray-800 pb-4">
-                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                        <span class="text-xs text-gray-500 font-mono pl-2">northpeak.digital/performance</span>
-                    </div>
-                    <div class="space-y-3 font-mono text-sm text-gray-300">
-                        <p class="text-green-400">✓ Page Speed: 99/100</p>
-                        <p class="text-blue-400">✓ Conversion Rate: +142%</p>
-                        <p class="text-purple-400">✓ Revenue Generated: $4.2M+</p>
-                    </div>
+            <div>
+                <div class="card metrics-card">
+                    <p style="color: #64748b; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; margin-bottom: 1rem;">northpeak.digital/performance</p>
+                    <p style="color: #4ade80;">✓ Page Speed Score: 100/100</p>
+                    <p style="color: #60a5fa;">✓ Conversion Rate: +142%</p>
+                    <p style="color: #c084fc;">✓ Revenue Generated: $4.2M+</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 2. Services Grid (6 Services) -->
-    <section id="services" class="py-20 bg-gray-950 px-6 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold text-white sm:text-4xl">Our Core Capabilities</h2>
-                <p class="text-gray-400 mt-4">Tailored technical solutions designed to maximize conversion and speed.</p>
+        <!-- Services -->
+        <section id="services" class="section bg-dark">
+            <h2 class="section-title">Our Core Capabilities</h2>
+            <p class="section-desc">Tailored technical solutions designed to maximize speed and conversions.</p>
+            <div class="grid-3">
+                <div class="card service-card"><div class="service-num">01</div><h3>Web Development</h3><p>Semantic and lightweight websites engineered for maximum performance.</p></div>
+                <div class="card service-card"><div class="service-num">02</div><h3>Shopify Solutions</h3><p>Custom theme development and seamless e-commerce store migrations.</p></div>
+                <div class="card service-card"><div class="service-num">03</div><h3>UI/UX Design</h3><p>Conversion-focused user interface design backed by accessibility standards.</p></div>
+                <div class="card service-card"><div class="service-num">04</div><h3>API Integration</h3><p>Robust backend connections connecting payment gateways and databases.</p></div>
+                <div class="card service-card"><div class="service-num">05</div><h3>SEO Optimization</h3><p>Technical SEO enhancements to guarantee maximum search visibility.</p></div>
+                <div class="card service-card"><div class="service-num">06</div><h3>Performance Audit</h3><p>Eliminate web bottlenecks and ensure consistent 90+ Lighthouse scores.</p></div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="bg-gray-900 p-8 rounded-xl border border-gray-800 hover:border-blue-500/50 transition group">
-                    <div class="w-12 h-12 bg-blue-600/10 rounded-lg flex items-center justify-center text-blue-500 mb-6 font-bold text-xl group-hover:bg-blue-600 group-hover:text-white transition">01</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Web Development</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Custom, semantic, and light-weight websites engineered for speed and accessibility.</p>
-                </div>
-                <!-- Service 2 -->
-                <div class="bg-gray-900 p-8 rounded-xl border border-gray-800 hover:border-blue-500/50 transition group">
-                    <div class="w-12 h-12 bg-blue-600/10 rounded-lg flex items-center justify-center text-blue-500 mb-6 font-bold text-xl group-hover:bg-blue-600 group-hover:text-white transition">02</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Shopify Development</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Custom Liquid themes and seamless e-commerce store migrations with high UX polish.</p>
-                </div>
-                <!-- Service 3 -->
-                <div class="bg-gray-900 p-8 rounded-xl border border-gray-800 hover:border-blue-500/50 transition group">
-                    <div class="w-12 h-12 bg-blue-600/10 rounded-lg flex items-center justify-center text-blue-500 mb-6 font-bold text-xl group-hover:bg-blue-600 group-hover:text-white transition">03</div>
-                    <h3 class="text-xl font-bold text-white mb-2">UI/UX Design</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Conversion-focused user interface design backed by rigorous usability testing.</p>
-                </div>
-                <!-- Service 4 -->
-                <div class="bg-gray-900 p-8 rounded-xl border border-gray-800 hover:border-blue-500/50 transition group">
-                    <div class="w-12 h-12 bg-blue-600/10 rounded-lg flex items-center justify-center text-blue-500 mb-6 font-bold text-xl group-hover:bg-blue-600 group-hover:text-white transition">04</div>
-                    <h3 class="text-xl font-bold text-white mb-2">API & Integration</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Robust backend integrations connecting CRMs, payment gateways, and databases.</p>
-                </div>
-                <!-- Service 5 -->
-                <div class="bg-gray-900 p-8 rounded-xl border border-gray-800 hover:border-blue-500/50 transition group">
-                    <div class="w-12 h-12 bg-blue-600/10 rounded-lg flex items-center justify-center text-blue-500 mb-6 font-bold text-xl group-hover:bg-blue-600 group-hover:text-white transition">05</div>
-                    <h3 class="text-xl font-bold text-white mb-2">SEO Optimization</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Technical SEO enhancements to guarantee high visibility across AI search & Google.</p>
-                </div>
-                <!-- Service 6 -->
-                <div class="bg-gray-900 p-8 rounded-xl border border-gray-800 hover:border-blue-500/50 transition group">
-                    <div class="w-12 h-12 bg-blue-600/10 rounded-lg flex items-center justify-center text-blue-500 mb-6 font-bold text-xl group-hover:bg-blue-600 group-hover:text-white transition">06</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Performance Audit</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Lighthouse analysis to eliminate bottlenecks and guarantee 90+ performance scores.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 3. Results / Testimonials Section -->
-    <section id="results" class="py-20 px-6 max-w-7xl mx-auto">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-            <h2 class="text-3xl font-bold text-white sm:text-4xl">Client Results</h2>
-            <p class="text-gray-400 mt-4">Real outcomes delivered for high-growth DTC and B2B brands.</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-gray-800/50 p-8 rounded-xl border border-gray-700">
-                <p class="text-gray-300 text-sm italic mb-6">"North Peak rebuilt our Shopify store completely. Our bounce rate dropped 35% within the first two weeks!"</p>
-                <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 rounded-full bg-blue-600 font-bold flex items-center justify-center text-white">SK</div>
+        <!-- Testimonials -->
+        <section id="results" class="section">
+            <h2 class="section-title">Client Results</h2>
+            <p class="section-desc">Proven impact delivered across DTC and B2B platforms.</p>
+            <div class="grid-3">
+                <div class="card"><p style="font-style: italic; color: #cbd5e1; margin-bottom: 1rem;">"North Peak rebuilt our store completely. Our conversion rate jumped instantly!"</p><strong style="color:#fff;">Sarah Jenkins</strong><br><span style="font-size:0.8rem; color:#64748b;">Founder, Lumina Glow</span></div>
+                <div class="card"><p style="font-style: italic; color: #cbd5e1; margin-bottom: 1rem;">"Their optimization work gave us our highest Q4 revenue on record."</p><strong style="color:#fff;">Marcus Reed</strong><br><span style="font-size:0.8rem; color:#64748b;">CMO, Apex Gear</span></div>
+                <div class="card"><p style="font-style: italic; color: #cbd5e1; margin-bottom: 1rem;">"Clean code, semantic HTML, and unbelievable load times."</p><strong style="color:#fff;">Elena Lou</strong><br><span style="font-size:0.8rem; color:#64748b;">Director, Vantage Labs</span></div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section id="pricing" class="section bg-dark">
+            <h2 class="section-title">Transparent Pricing</h2>
+            <p class="section-desc">Straightforward investment options tailored to your business needs.</p>
+            <div class="grid-3">
+                <div class="card pricing-card">
                     <div>
-                        <h4 class="text-white font-semibold text-sm">Sarah Jenkins</h4>
-                        <p class="text-gray-500 text-xs">Founder, Lumina Glow</p>
+                        <h3>Starter Build</h3>
+                        <div class="price">$1,499</div>
+                        <ul class="features"><li>✓ 1-Page Responsive Site</li><li>✓ Mobile Optimized</li><li>✓ Basic Contact Form</li></ul>
                     </div>
+                    <a href="#contact" class="btn" style="text-align:center;">Select Plan</a>
                 </div>
-            </div>
-            <div class="bg-gray-800/50 p-8 rounded-xl border border-gray-700">
-                <p class="text-gray-300 text-sm italic mb-6">"Their attention to mobile optimization and site speed gave us our highest Q4 revenue on record."</p>
-                <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 rounded-full bg-purple-600 font-bold flex items-center justify-center text-white">MR</div>
+                <div class="card pricing-card popular">
                     <div>
-                        <h4 class="text-white font-semibold text-sm">Marcus Reed</h4>
-                        <p class="text-gray-500 text-xs">CMO, Apex Gear</p>
+                        <h3>Growth Engine</h3>
+                        <div class="price">$2,999</div>
+                        <ul class="features"><li>✓ Up to 5 Custom Pages</li><li>✓ CMS Integration</li><li>✓ Priority Performance</li></ul>
                     </div>
+                    <a href="#contact" class="btn" style="text-align:center;">Select Plan</a>
                 </div>
-            </div>
-            <div class="bg-gray-800/50 p-8 rounded-xl border border-gray-700">
-                <p class="text-gray-300 text-sm italic mb-6">"Extremely professional delivery. Clean code, semantic HTML, and unbelievable load times."</p>
-                <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 rounded-full bg-green-600 font-bold flex items-center justify-center text-white">EL</div>
+                <div class="card pricing-card">
                     <div>
-                        <h4 class="text-white font-semibold text-sm">Elena Lou</h4>
-                        <p class="text-gray-500 text-xs">Director, Vantage Labs</p>
+                        <h3>Enterprise</h3>
+                        <div class="price">$4,999+</div>
+                        <ul class="features"><li>✓ Full Custom Web App</li><li>✓ Dedicated API Backend</li><li>✓ 24/7 Priority Support</li></ul>
                     </div>
+                    <a href="#contact" class="btn" style="text-align:center;">Contact Us</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 4. Pricing (3 Tiers) -->
-    <section id="pricing" class="py-20 bg-gray-950 px-6 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold text-white sm:text-4xl">Transparent Pricing</h2>
-                <p class="text-gray-400 mt-4">Predictable investment options tailored to your business stage.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Tier 1 -->
-                <div class="bg-gray-900 p-8 rounded-xl border border-gray-800 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-bold text-gray-300">Starter Build</h3>
-                        <div class="text-3xl font-extrabold text-white my-4">$1,499</div>
-                        <p class="text-gray-400 text-xs mb-6">Perfect for small businesses looking for a high-converting landing page.</p>
-                        <ul class="space-y-3 text-sm text-gray-300 mb-8">
-                            <li>✓ 1-Page Responsive Site</li>
-                            <li>✓ Mobile Optimized</li>
-                            <li>✓ Basic Contact Form</li>
-                            <li>✓ 90+ Lighthouse Guarantee</li>
-                        </ul>
+        <!-- Contact Section -->
+        <section id="contact" class="section" style="max-width: 600px;">
+            <div class="card">
+                <h2 class="section-title" style="margin-bottom: 0.5rem;">Start Your Project</h2>
+                <p class="section-desc" style="margin-bottom: 2rem;">Fill out the form below to get in touch with our team.</p>
+                <form id="contactForm" novalidate>
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" class="form-control" placeholder="Ali Hamza">
+                        <div id="nameError" class="error-msg">Please enter your full name.</div>
                     </div>
-                    <a href="#contact" class="w-full bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 rounded-lg text-center block transition">Select Plan</a>
-                </div>
-                <!-- Tier 2 (Featured) -->
-                <div class="bg-gray-900 p-8 rounded-xl border-2 border-blue-500 shadow-xl flex flex-col justify-between relative scale-105">
-                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Most Popular</span>
-                    <div>
-                        <h3 class="text-lg font-bold text-white">Growth Engine</h3>
-                        <div class="text-3xl font-extrabold text-white my-4">$2,999</div>
-                        <p class="text-gray-400 text-xs mb-6">Designed for brands scaling traffic and requiring custom Shopify/Web builds.</p>
-                        <ul class="space-y-3 text-sm text-gray-300 mb-8">
-                            <li>✓ Up to 5 Custom Pages</li>
-                            <li>✓ Shopify / CMS Integration</li>
-                            <li>✓ Advanced SEO & Analytics</li>
-                            <li>✓ Priority Support (30 Days)</li>
-                        </ul>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" class="form-control" placeholder="alihamzaabdulrazzaq1122@gmail.com">
+                        <div id="emailError" class="error-msg">Please enter a valid email address.</div>
                     </div>
-                    <a href="#contact" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3 rounded-lg text-center block transition shadow-lg shadow-blue-500/30">Select Plan</a>
-                </div>
-                <!-- Tier 3 -->
-                <div class="bg-gray-900 p-8 rounded-xl border border-gray-800 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-bold text-gray-300">Custom Enterprise</h3>
-                        <div class="text-3xl font-extrabold text-white my-4">$4,999+</div>
-                        <p class="text-gray-400 text-xs mb-6">Complex web apps and custom full-stack solutions.</p>
-                        <ul class="space-y-3 text-sm text-gray-300 mb-8">
-                            <li>✓ Unlimited Custom Pages</li>
-                            <li>✓ Custom API & Backend</li>
-                            <li>✓ Dedicated Project Manager</li>
-                            <li>✓ SLA & Maintenance Included</li>
-                        </ul>
+                    <div class="form-group">
+                        <label for="message">Project Details *</label>
+                        <textarea id="message" rows="4" class="form-control" placeholder="Tell us about your project..."></textarea>
+                        <div id="msgError" class="error-msg">Please enter your project details.</div>
                     </div>
-                    <a href="#contact" class="w-full bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 rounded-lg text-center block transition">Contact Us</a>
-                </div>
+                    <button type="submit" class="btn" style="width: 100%; padding: 0.8rem;">Send Message</button>
+                    <div id="formSuccess" class="success-msg">✓ Thank you! Your message has been sent.</div>
+                </form>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- 5. Contact Form (Client-side Validation) -->
-    <section id="contact" class="py-20 px-6 max-w-3xl mx-auto">
-        <div class="bg-gray-900 p-8 sm:p-12 rounded-2xl border border-gray-800 shadow-2xl">
-            <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-white">Start Your Project</h2>
-                <p class="text-gray-400 text-sm mt-2">Fill out the form below and our team will get back to you within 24 hours.</p>
-            </div>
-            
-            <form id="contactForm" novalidate class="space-y-6">
-                <div>
-                    <label for="fullName" class="block text-sm font-semibold text-gray-300 mb-2">Full Name *</label>
-                    <input type="text" id="fullName" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-500 transition" placeholder="Ali Hamza">
-                    <p id="nameError" class="text-red-400 text-xs mt-1 hidden">Please enter your full name.</p>
-                </div>
-                
-                <div>
-                    <label for="email" class="block text-sm font-semibold text-gray-300 mb-2">Email Address *</label>
-                    <input type="email" id="email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-500 transition" placeholder="alihamzaabdulrazzaq1122@gmail.com">
-                    <p id="emailError" class="text-red-400 text-xs mt-1 hidden">Please enter a valid email address.</p>
-                </div>
-
-                <div>
-                    <label for="message" class="block text-sm font-semibold text-gray-300 mb-2">Project Details *</label>
-                    <textarea id="message" rows="4" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-blue-500 transition" placeholder="Tell us about your project requirements..."></textarea>
-                    <p id="msgError" class="text-red-400 text-xs mt-1 hidden">Please enter your project message.</p>
-                </div>
-
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3.5 rounded-lg shadow-lg shadow-blue-500/20 transition">
-                    Send Message
-                </button>
-                <p id="formSuccess" class="text-green-400 text-sm text-center hidden">✓ Thank you! Your message has been validated and sent.</p>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer with MANDATORY Digital Heroes Credit Link -->
-    <footer class="bg-gray-950 border-t border-gray-800 py-8 text-center text-xs text-gray-500">
-        <div class="max-w-7xl mx-auto px-6 space-y-3">
-            <p>© 2026 North Peak Digital. All rights reserved.</p>
-            <!-- MANDATORY REQUIREMENT -->
-            <p class="font-medium text-gray-400">
-                <a href="https://digitalheroesco.com" target="_blank" class="hover:text-blue-400 underline transition">Built for Digital Heroes Training Task</a>
-            </p>
-        </div>
+    <!-- MANDATORY LINK IN FOOTER -->
+    <footer>
+        <p>© 2026 North Peak Digital. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="https://digitalheroesco.com" target="_blank" rel="noopener">Built for Digital Heroes Training Task</a>
+        </p>
     </footer>
 
-    <!-- Form Validation Script -->
     <script>
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
             const name = document.getElementById('fullName');
             const email = document.getElementById('email');
             const message = document.getElementById('message');
@@ -261,39 +198,16 @@
             const formSuccess = document.getElementById('formSuccess');
 
             let isValid = true;
-
-            // Name Validation
-            if (!name.value.trim()) {
-                nameError.classList.remove('hidden');
-                isValid = false;
-            } else {
-                nameError.classList.add('hidden');
-            }
-
-            // Email Validation regex
+            if (!name.value.trim()) { nameError.style.display = 'block'; isValid = false; } else { nameError.style.display = 'none'; }
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email.value.trim())) {
-                emailError.classList.remove('hidden');
-                isValid = false;
-            } else {
-                emailError.classList.add('hidden');
-            }
-
-            // Message Validation
-            if (!message.value.trim()) {
-                msgError.classList.remove('hidden');
-                isValid = false;
-            } else {
-                msgError.classList.add('hidden');
-            }
+            if (!emailRegex.test(email.value.trim())) { emailError.style.display = 'block'; isValid = false; } else { emailError.style.display = 'none'; }
+            if (!message.value.trim()) { msgError.style.display = 'block'; isValid = false; } else { msgError.style.display = 'none'; }
 
             if (isValid) {
-                formSuccess.classList.remove('hidden');
-                name.value = '';
-                email.value = '';
-                message.value = '';
+                formSuccess.style.display = 'block';
+                name.value = ''; email.value = ''; message.value = '';
             } else {
-                formSuccess.classList.add('hidden');
+                formSuccess.style.display = 'none';
             }
         });
     </script>
